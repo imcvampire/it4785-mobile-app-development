@@ -1,10 +1,12 @@
 package io.imcvampire.simpleform;
 
+import java.lang.*;
+
 public class Restaurant {
   private String name = "";
   private String address = "";
   private String type = "";
-  private String sale = "";
+  private Number sale = 0;
 
   public String getName() {
     return (name);
@@ -30,15 +32,15 @@ public class Restaurant {
     this.type = type;
   }
 
-  public void setSale(String sale) {
+  public void setSale(Number sale) {
     this.sale = sale;
   }
 
-  public String getSale() {
+  public Number getSale() {
     return (sale);
   }
 
   public String toString() {
-    return ("Name: " + getName() + " - Sale: " + getSale());
+    return ("Name: " + getName() + " - Sale: " + getSale() + "%");
   }
 }

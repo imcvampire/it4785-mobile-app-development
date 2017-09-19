@@ -37,7 +37,7 @@
                 />
             </RadioGroup>
 
-            <TextView android:text="Sale:"/>
+            <TextView android:text="Sale:" />
             <RadioGroup android:id="@+id/sale">
                 <RadioButton android:id="@+id/sale_0"
                              android:text="0%"
@@ -54,11 +54,20 @@
                 />
             </RadioGroup>
         </TableRow>
-        <Button android:id="@+id/save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save"
-        />
+        <TableRow>
+            <Button android:id="@+id/save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:text="Save"
+            />
+            <Button android:id="@+id/sort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:text="Sort"
+            />
+        </TableRow>
     </TableLayout>
 
     <ListView android:id="@+id/restaurants"

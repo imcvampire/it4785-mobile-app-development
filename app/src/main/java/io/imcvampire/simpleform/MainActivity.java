@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import android.graphics.*;
+
 import java.util.*;
 
 public class MainActivity extends Activity {
@@ -17,11 +18,13 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    Button save=(Button)findViewById(R.id.save);
-
+    Button save = (Button) findViewById(R.id.save);
     save.setOnClickListener(onSave);
 
-    ListView list=(ListView)findViewById(R.id.restaurants);
+    Button sort = findViewById(R.id.sort);
+    sort.setOnClickListener(onSort);
+
+    ListView list = (ListView) findViewById(R.id.restaurants);
 
     adapter = new ArrayAdapter<Restaurant>(
         this,
@@ -33,7 +36,7 @@ public class MainActivity extends Activity {
 
   private View.OnClickListener onSave = new View.OnClickListener() {
     public void onClick(View v) {
-      Restaurant r=new Restaurant();
+      Restaurant r = new Restaurant();
 
       EditText name = (EditText) findViewById(R.id.name);
       EditText address = (EditText) findViewById(R.id.addr);
@@ -67,17 +70,17 @@ public class MainActivity extends Activity {
       switch (sale.getCheckedRadioButtonId()) {
         case R.id.sale_0:
           csSale = "0%";
-          r.setSale("0%");
+          r.setSale(0);
           break;
 
         case R.id.sale_25:
           csSale = "25%";
-          r.setSale("25%");
+          r.setSale(25);
           break;
 
         case R.id.sale_50:
           csSale = "50%";
-          r.setSale("50%");
+          r.setSale(50);
           break;
       }
 
@@ -133,4 +136,15 @@ public class MainActivity extends Activity {
         break;
     }
   }
+
+  private View.OnClickListener onSort = new View.OnClickListener() {
+    public void onClick(View v) {
+      adapter.sort(new Comparator<Restaurant>() {
+        @Override
+        public int compare(Restaurant r1, Restaurant r2) {
+          return r2.getSale().intValue() - r1.getSale().intValue();
+        }
+      });
+    }
+  };
 }
